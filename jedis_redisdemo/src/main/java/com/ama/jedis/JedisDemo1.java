@@ -18,7 +18,7 @@ public class JedisDemo1 {
     public static void main(String[] args) {
         //创建Jedis对象
         //host:虚拟机iP地址
-        Jedis jedis = new Jedis("192.168.218.131", 6379);
+        Jedis jedis = new Jedis("192.168.234.128", 6379);
 
         //测试
         String value = jedis.ping();
