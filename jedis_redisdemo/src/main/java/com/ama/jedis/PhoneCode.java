@@ -51,14 +51,15 @@ public class PhoneCode {
         //验证码key
         String codeKey = "VerifyCode" + phone + "code";
 
-        //每个手机每天只能发送三次
+        //根据Key获取value
         String count = jedis.get(countKey);
         if (count == null) {
             //没有发送次数，第一次发送
-            //设置发送次数是1
+            //设置value发送次数是1
             jedis.setex(countKey, 24 * 60 * 60, "1");
         } else if (Integer.parseInt(count) <= 2) {
             //发送次数+1
+            //对countKey键的value值进行+1;
             jedis.incr(countKey);
         } else if (Integer.parseInt(count) > 2) {
             //发送三次，不能再发送
